@@ -22,5 +22,3 @@ class Sheet:
         column_values = column_list[1:]
 
         return column_values
-
-new_sheet = Sheet('Lab Contents', 'nurobotics-lab-inventory-bot-credentials')

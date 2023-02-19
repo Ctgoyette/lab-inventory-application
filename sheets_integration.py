@@ -24,3 +24,6 @@ class Sheet:
         list_of_worksheets = self.spreadsheet.worksheets()
         self.categories = [name.title for name in list_of_worksheets]
         return self.categories
+
+new = Sheet('Lab Contents', 'nurobotics-lab-inventory-bot-credentials.json')
+new.get_column('Item')

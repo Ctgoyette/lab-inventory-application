@@ -23,5 +23,4 @@ class Sheet:
     def get_categories(self):
         list_of_worksheets = self.spreadsheet.worksheets()
         self.categories = [name.title for name in list_of_worksheets]
-        print(self.categories)
         return self.categories

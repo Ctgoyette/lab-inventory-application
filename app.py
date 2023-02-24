@@ -32,6 +32,22 @@ class app(Ui_MainWindow):
         for item in current_category.category_items.keys():
             self.item_list.addItem(item)
         
+        self.item_list.itemSelectionChanged.connect(self.update_details_tab)
+    
+    def update_details_tab(self):
+        current_category = self.lab_database.categories[self.categories_list.currentItem().text()]
+        try:
+            current_item = current_category.category_items[self.item_list.currentItem().text()]
+            self.item_label.setText(current_item.name)
+            self.brand_label.setText(current_item.brand)
+            self.quantity_label.setText(current_category.quantity)
+            self.location_label.setText(current_item.location)
+            self.description_label.setText(current_item.description)
+        except:
+            return None
+
+
+        
 
 
 #########################################################

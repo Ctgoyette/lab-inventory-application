@@ -18,6 +18,7 @@ class Database:
             brand_values = self.contents_file.get_col_values('Brand')
             quantity_values = self.contents_file.get_col_values('# of Units')
             description_values = self.contents_file.get_col_values('Description')
+            location_values = self.contents_file.get_col_values('Location')
 
             item_values = self.contents_file.get_col_values('Item')
 
@@ -27,8 +28,9 @@ class Database:
                 brand = brand_values[item_row] if brand_values is not None else None
                 quantity = quantity_values[item_row] if quantity_values is not None else None
                 description = description_values[item_row] if description_values is not None else None
+                location = location_values[item_row] if description_values is not None else None
 
-                new_item = Item(item, brand, quantity, description)
+                new_item = Item(item, brand, quantity, description, location)
 
                 new_category.category_items[item] = new_item
 

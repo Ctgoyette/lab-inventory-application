@@ -1,7 +1,7 @@
 from raw_gui import Ui_MainWindow
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtMultimedia import *
-from sheets_integration import Sheet
+from database import Database
 from functools import partial
 import sys
 
@@ -9,8 +9,7 @@ class app(Ui_MainWindow):
     def __init__(self):
         self.app = QtWidgets.QApplication(sys.argv)
         self.main_window_setup()
-
-        self.contents_file = Sheet('Lab Contents', 'nurobotics-lab-inventory-bot-credentials.json')
+        self.lab_database = Database('Lab Contents', 'nurobotics-lab-inventory-bot-credentials.json')
         self.setup_categories_list()
     
     def main_window_setup(self):
@@ -22,15 +21,15 @@ class app(Ui_MainWindow):
         self.MainWindow.setWindowTitle('Inventory System')
 
     def setup_categories_list(self):
-        for category in self.contents_file.get_categories():
+        for category in self.lab_database.categories.keys():
             self.categories_list.addItem(category)
 
         self.categories_list.itemSelectionChanged.connect(self.update_item_list)
 
     def update_item_list(self):
         self.item_list.clear()
-        self.contents_file.select_worksheet(self.categories_list.currentItem().text())
-        for item in self.contents_file.get_column('Item'):
+        current_category = self.lab_database.categories[self.categories_list.currentItem().text()]
+        for item in current_category.category_items.keys():
             self.item_list.addItem(item)
         
 

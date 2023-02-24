@@ -10,8 +10,6 @@ class Database:
 
     def load_database(self):
 
-        print(self.contents_file.get_categories())
-
         for category in self.contents_file.get_categories():
 
             new_category = Category(category)
@@ -34,7 +32,4 @@ class Database:
 
                 new_category.category_items[item] = new_item
 
-            print(new_category.category_items)
-
-
-new_database = Database('Lab Contents', 'nurobotics-lab-inventory-bot-credentials.json')
+            self.categories[category] = new_category

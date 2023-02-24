@@ -1,5 +1,5 @@
-class item:
-    def __init__(self, name, brand = '', quantity = '', description = ''):
+class Item:
+    def __init__(self, name, brand = None, quantity = None, description = None):
         self.item_name = name
         self.item_brand = brand
         self.item_quantity = quantity

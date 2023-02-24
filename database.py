@@ -28,7 +28,7 @@ class Database:
                 brand = brand_values[item_row] if brand_values is not None else None
                 quantity = quantity_values[item_row] if quantity_values is not None else None
                 description = description_values[item_row] if description_values is not None else None
-                location = location_values[item_row] if description_values is not None else None
+                location = location_values[item_row] if location_values is not None else None
 
                 new_item = Item(item, brand, quantity, description, location)
 
